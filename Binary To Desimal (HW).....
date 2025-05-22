@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int binaryToDecimal(const char *binary) {
+    int decimal = 0;
+    int length = strlen(binary);
+    for (int i = 0; i < length; i++) {
+        if (binary[i] == '1') {
+            decimal += pow(2, length - 1 - i);
+        } else if (binary[i] != '0') {
+            return -1;
+        }
+    }
+    return decimal;
+}
+
+int main() {
+    char binary[65];
+    scanf("%64s", binary);
+    int decimal = binaryToDecimal(binary);
+    if (decimal != -1) {
+        printf("%d\n", decimal);
+    } else {
+        printf("Invalid input\n");
+    }
+    return 0;
+}
